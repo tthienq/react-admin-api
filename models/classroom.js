@@ -31,8 +31,8 @@ const classroomScheme = new mongoose.Schema(
       type: Array,
       required: true
     },
-    teacher:{
-      type: String,
+    teachers:{
+      type: Array,
       required:true
     },
     meterial: {

@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
 
+const useAdminRoutes = require('./routes/index');
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -20,7 +22,7 @@ module.exports = (req, res, next) => {
 }
 
 // Routes
-app.use('/api', require('./routes/userRouter'));
+useAdminRoutes(app)
 
 // Connect to mongodb
 const URL = process.env.MONGODB_URL;

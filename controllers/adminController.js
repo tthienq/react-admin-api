@@ -1,10 +1,10 @@
+const { vary } = require("express/lib/response");
 const Users = require("../models/user");
 
 const userController = {
-  getUsersAllInfor: async (req, res) => {
+  getAdminsAllInfor: async (req, res) => {
     try {
       //http://localhost:3000/#/users?filter=%7B%7D&order=ASC&page=1&perPage=10&sort=name
-      
       if (typeof(req.query.filter) !== 'undefined') {
         var filter  = req.query.filter;
       } else var filter = null;
