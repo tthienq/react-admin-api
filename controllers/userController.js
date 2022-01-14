@@ -58,7 +58,6 @@ const userController = {
           createdAt: user[i].createdAt,
           updatedAt: user[i].updatedAt,
           status: user[i].status,
-          role: user[i].role,
         });
       }
       return res.json(data);
@@ -83,7 +82,6 @@ const userController = {
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
         status: user.status,
-        role: user.role,
       };
       res.status(200).json(data);
     } catch (err) {
