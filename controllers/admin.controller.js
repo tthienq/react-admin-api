@@ -104,19 +104,6 @@ const adminController = {
       });
     }
   },
-  deleteUser: async (req, res) => {
-    try {
-      console.log(req.params.id)
-      await Users.findByIdAndDelete(req.params.id);
-      
-      return res.status(200).json({ status: 'success' });
-    } catch (err) {
-      return res.status(500).json({
-        status: 'error',
-        message: err.message,
-      });
-    }
-  }
 };
 
 module.exports = adminController;

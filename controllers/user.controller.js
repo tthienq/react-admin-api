@@ -93,7 +93,6 @@ const userController = {
   },
   updateUser: async (req, res) => {
     try {
-      console.log(req.body);
       const { id, name, fullname, status, statusNum, studentID } = req.body;
       if (studentID === null) { //TH1: delete studentId 
         await Users.findOneAndUpdate(

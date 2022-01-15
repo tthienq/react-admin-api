@@ -164,7 +164,6 @@ const classController = {
   updateClass: async (req, res) => {
     try {
       const { id, name, desc, topic, room } = req.body;
-      //const classroom = await Classrooms.findOne({ _id: id });
       await Classrooms.findOneAndUpdate(
         { _id: req.params.id },
         {

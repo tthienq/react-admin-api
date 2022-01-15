@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userController = require('../controllers/userController');
+const userController = require('../controllers/user.controller');
 const rangeMdw = require('../middleware/range.mdw');
 
 router.get('/', rangeMdw, userController.getUsersAllInfor);

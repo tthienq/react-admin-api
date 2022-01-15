@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const passport = require('passport');
+
 require('dotenv').config();
 
+const usePassport = require('./common/passport');
 const useAdminRoutes = require('./routes/index');
 
 const app = express();
@@ -16,10 +19,9 @@ app.use(fileUpload({
 }))
 app.use(express.static('../build'));
 
-module.exports = (req, res, next) => {
-  res.header('Content-Range', 'users 0-20/20')
-  next()
-}
+// Passport
+usePassport(passport);
+app.use(passport.initialize());
 
 // Routes
 useAdminRoutes(app)
