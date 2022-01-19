@@ -20,7 +20,7 @@ const adminScheme = new mongoose.Schema(
     avatar: {
       type: String,
       default:
-        "https://res.cloudinary.com/ericnguyen-cop/image/upload/v1625668136/avatar/avatar-1577909_640_nrt1sc.png",
+        "https://res.cloudinary.com/ericnguyen-cop/image/upload/v1642614192/Classroom/rolodrs1qyjxysm0vuow.png",
     },
   },
   {

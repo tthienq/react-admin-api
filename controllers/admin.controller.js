@@ -1,4 +1,5 @@
 const Admins = require("../models/admin");
+const bcrypt = require('bcryptjs');
 
 const adminController = {
   getAdminsAllInfor: async (req, res) => {
@@ -104,6 +105,42 @@ const adminController = {
       });
     }
   },
+  createAdminAccount: async (req, res) => {
+    try {
+      const { name, email, password } = req.body;
+
+      const admin = await Admins.findOne({ email });
+      if (admin) {
+        return res.status(400).json({ msg: "This email already exists." });
+      }
+      const passwordHash = await bcrypt.hash(password, 12);
+      const newAdmin = new Admins({
+        name,
+        email,
+        password: passwordHash,
+      });
+      await newAdmin.save();
+      res.status(200).json({ id: newAdmin._id });
+    } catch (err) {
+      return res.status(500).json({
+        status: 'error',
+        message: err.message,
+      });
+    }
+  },
+  deleteAdminAccount: async (req, res) => {
+    try {
+      //console.log(req.params.id)
+      await Admins.findByIdAndDelete(req.params.id);
+
+      return res.status(200).json({ status: 'success' });
+    } catch (err) {
+      return res.status(500).json({
+        status: 'error',
+        message: err.message,
+      });
+    }
+  }
 };
 
 module.exports = adminController;
